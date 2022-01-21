@@ -25,7 +25,7 @@ public class RefreshToken implements Token<Claims> {
 	}
 
 	RefreshToken(final Map<String, Object> claims, final Date expiredDate, final Key secreatKey, final SignatureAlgorithm signatureAlgorithm) {
-		claims.put(TOKEN_TYPE_CLAIM_KEY, TokenType.REFRESH.name());
+		claims.put(ClaimKey.TOKEN_TYPE.getKeyName(), TokenType.REFRESH.name());
 		this.token = Jwts.builder()
 				.setClaims(claims)
 				.setIssuedAt(Date.from(Instant.now()))
@@ -39,7 +39,7 @@ public class RefreshToken implements Token<Claims> {
 
 	@Override
 	public void validation() {
-		if (!getClaims().get(TOKEN_TYPE_CLAIM_KEY).equals(TokenType.REFRESH.name())) {
+		if (!getClaims().get(ClaimKey.TOKEN_TYPE.getKeyName()).equals(TokenType.REFRESH.name())) {
 			throw new IllegalStateException();
 		}
 	}
