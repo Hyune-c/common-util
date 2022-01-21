@@ -1,10 +1,19 @@
 package com.example.commonutil.jwt;
 
 import io.jsonwebtoken.Claims;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
 public interface Token<T> {
 
-	String TOKEN_TYPE_CLAIM_KEY = "tokenType";
+	@Getter
+	@RequiredArgsConstructor
+	enum ClaimKey {
+		USER_ID("userId"),
+		TOKEN_TYPE("tokenType");
+
+		private final String keyName;
+	}
 
 	void validation();
 

@@ -25,7 +25,7 @@ public class AccessToken implements Token<Claims> {
 	}
 
 	AccessToken(final Map<String, Object> claims, final Date expiredDate, final Key secreatKey, final SignatureAlgorithm signatureAlgorithm) {
-		claims.put(TOKEN_TYPE_CLAIM_KEY, TokenType.ACCESS.name());
+		claims.put(ClaimKey.TOKEN_TYPE.getKeyName(), TokenType.ACCESS.name());
 		this.token = Jwts.builder()
 				.setClaims(claims)
 				.setIssuedAt(Date.from(Instant.now()))
@@ -39,7 +39,7 @@ public class AccessToken implements Token<Claims> {
 
 	@Override
 	public void validation() {
-		if (!getClaims().get(TOKEN_TYPE_CLAIM_KEY).equals(TokenType.ACCESS.name())) {
+		if (!getClaims().get(ClaimKey.TOKEN_TYPE.getKeyName()).equals(TokenType.ACCESS.name())) {
 			throw new IllegalStateException();
 		}
 	}
