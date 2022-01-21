@@ -7,3 +7,10 @@
 
 - page 를 slice 로 변환시켜주는 기능
 - 동적 쿼리를 위한 BooleanExpression 를 편하게 사용하는 기능
+
+### JWT
+
+- JwtConfig 를 통한 설정 분리
+- AccessToken, RefreshToken 생성과 상호 갱신 기능
+- Provider 를 통한 안전한 생성
+- Role 에 대한 인터페이스는 제공하지 않습니다. <- 추후 개선 예정
